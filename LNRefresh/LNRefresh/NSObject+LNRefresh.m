@@ -196,7 +196,9 @@ static const char LNRefreshFooterKey = '\0';
 
 #pragma mark - LNRefreshHeader 下拉
 - (LNRefreshHeader *)addPullToRefresh:(LNRefreshComponentBlock)block {
-    return [self addPullToRefresh:[[LNHeaderAnimator alloc] init] block:block];
+    LNHeaderAnimator *animator = [[LNHeaderAnimator alloc] init];
+    animator.titleLabel.textColor = [UIColor darkGrayColor];
+    return [self addPullToRefresh:animator block:block];
 }
 
 - (LNRefreshHeader *)addPullToRefreshWithHeight:(CGFloat)height block:(LNRefreshComponentBlock)block {
