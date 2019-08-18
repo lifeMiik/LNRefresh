@@ -34,6 +34,9 @@
 @end
 
 #import "LNRefreshComponent.h"
+
+typedef BOOL(^FooterCallBack)(void);
+
 @class LNRefreshHeader, LNRefreshFooter, LNHeaderAnimator, LNFooterAnimator;
 @interface UIScrollView (LNRefreshExcetion)
 @property (nonatomic, strong) LNRefreshHeader *ln_header;
@@ -46,6 +49,7 @@
 - (LNRefreshFooter *)addInfiniteScrolling:(LNRefreshComponentBlock)block;
 - (LNRefreshFooter *)addInfiniteScrolling:(LNFooterAnimator *)animater block:(LNRefreshComponentBlock)block;
 
+
 - (void)startRefreshing;
 - (void)endRefreshing;
 - (void)removeRefreshHeader;
@@ -57,6 +61,8 @@
 - (void)reStartGIFAnimation;
 - (void)pullDownDealFooterWithItemCount:(NSInteger)itemCount cursor:(NSString *)cursor;
 - (void)pullUpRefreshDealFooterWithItemCount:(NSInteger)itemCount cursor:(NSString *)cursor;
+- (void)dealWithFooter:(NSInteger)count callBack:(FooterCallBack)callBack;
+
 
 - (void)hideRefreshFooter;
 - (void)hideRefreshHeader;

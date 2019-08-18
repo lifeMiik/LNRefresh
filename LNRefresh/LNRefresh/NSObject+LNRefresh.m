@@ -283,6 +283,24 @@ static const char LNRefreshFooterKey = '\0';
     }
 }
 
+#pragma -mark 处理无更多数据的情况
+- (void)dealWithFooter:(NSInteger)count callBack:(FooterCallBack)callBack
+{
+    [self endRefreshing];
+    if (count == 0) {
+        self.ln_footer.hidden = YES;
+    } else {
+        BOOL isNoMore = callBack();
+        if (isNoMore) {
+            // 重置 foote 可以刷新
+            [self resetNoMoreData];
+        } else {
+            // 没有更多数据
+            [self noticeNoMoreData];
+        }
+    }
+}
+
 - (void)reStartGIFAnimation {
     if (self.ln_header) {
         if (self.ln_header.isRefreshing) {
