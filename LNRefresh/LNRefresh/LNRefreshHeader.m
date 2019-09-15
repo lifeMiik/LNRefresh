@@ -50,7 +50,11 @@
                     [self.animator refreshView:self state:LNRefreshState_WillRefresh];
                 }
             } else {
-                [self.animator refreshView:self state:LNRefreshState_PullToRefresh];
+                if (self.scrollView.isDragging) {
+                    [self.animator refreshView:self state:LNRefreshState_PullToRefresh];
+                } else {
+                    [self.animator refreshView:self state:LNRefreshState_CancleRefresh];
+                }
             }
             if (self.scrollView.isDragging) {
                 [self.animator refreshView:self progress:progress];

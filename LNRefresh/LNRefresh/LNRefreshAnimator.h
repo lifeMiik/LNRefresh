@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, LNRefreshState) {
     LNRefreshState_PullToRefresh,
     LNRefreshState_WillRefresh,
     LNRefreshState_Refreshing,
+    LNRefreshState_CancleRefresh,
     LNRefreshState_NoMoreData
 };
 
