@@ -202,6 +202,9 @@
                 case LNRefreshState_Refreshing:
                     [self startRefreshAnimation_NOR];
                     break;
+                case LNRefreshState_CancleRefresh:
+                    
+                    break;
                 case LNRefreshState_NoMoreData:
                     self.titleLabel.text =  [LNRefreshHandler localizedStringForKey:LNRefreshNoMoreData];
                     break;
@@ -217,6 +220,9 @@
                 case LNRefreshState_WillRefresh:
                 case LNRefreshState_Refreshing:
                     [self startRefreshAnimation_GIF:state];
+                    break;
+                case LNRefreshState_CancleRefresh:
+                
                     break;
                 case LNRefreshState_NoMoreData:
                     self.gifView.hidden = YES;
